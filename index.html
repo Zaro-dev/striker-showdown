@@ -4,22 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Striker Showdown</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 
     <!-- PANTALLA DE INICIO -->
      
-    <div id="splash-screen" class="container"></div>
+    <div id="splash-screen" class="container">
+        <button id="start-btn">Start game!</button>
+    </div>
+
 
     <!-- PANTALLA DE JUEGO -->
     
-    <div id="game-screen" class="container"></div>
+    <div id="game-screen" class="container">
+        <h3><span>0</span> - <span>0</span></h3>
+        <div id="game-box"></div>
+    </div>
 
     <!-- PANTALLA  FINAL -->
 
     <div id="winner-screen" class="container"></div>
 
-    <script src="index.js"></script>
+    <script src="JS/main.js"></script>
+    <script src="JS/ball.js"></script>
+    <script src="JS/striker.js"></script>
 </body>
 </html>

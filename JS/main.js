@@ -6,10 +6,10 @@ const gameScreenNode = document.querySelector("#game-screen");
 const finalScreenNode = document.querySelector("#winner-screen");
 
 // botones
-const startBtnNode = document.querySelector("start-btn");
+const startBtnNode = document.querySelector("#start-btn");
 
 // game box
-
+const gameBoxNode = document.querySelector("game-box");
 
 
 //* VARIABLES GLOBALES DEL JUEGO
@@ -25,7 +25,21 @@ function startGame(){
     mainIntervalId = setInterval(() => {
         gameLoop();
     }, Math.round(1000/60));
+
+    
+}
+
+function gameLoop(){
+
+}
+
+function gameOver(){
+    clearInterval(mainIntervalId);
 }
 
 //* EVENT LISTENERS
 
+startBtnNode.addEventListener("click", () =>{
+    
+    startGame();
+})
