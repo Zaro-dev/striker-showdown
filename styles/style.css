@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    background-color: lightgray;
+}
+
+#start-btn {
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+#game-box {
+    background-color: green;
+    width: 600px;
+    height: 400px;
+
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+
+
+}
+
+#game-box {
+    pointer-events: none;
+}
+
+#game-screen, #winner-screen {
+    display: none;
+}
