@@ -9,7 +9,7 @@ const finalScreenNode = document.querySelector("#winner-screen");
 const startBtnNode = document.querySelector("#start-btn");
 
 // game box
-const gameBoxNode = document.querySelector("game-box");
+const gameBoxNode = document.querySelector("#game-box");
 
 
 //* VARIABLES GLOBALES DEL JUEGO
@@ -32,11 +32,11 @@ function startGame(){
     ballObj = new Ball();
     
     strikerObjRed = new Striker("red");
-    defenderObjRed = new Defender("red");
+    /* defenderObjRed = new Defender("red"); */
     goalKeeperRed = new GoalKeeper("red");
     
     strikerObjBlue = new Striker("blue");
-    defenderObjBlue = new Defender("blue");
+    /* defenderObjBlue = new Defender("blue"); */
     goalKeeperBlue = new GoalKeeper("blue");
 
     
@@ -48,7 +48,12 @@ function startGame(){
 }
 
 function gameLoop(){
+    ballObj.move();
+    goalKeeperRed.goalKeeperMovement();
+    goalKeeperRed.goalKeeperLimits();
 
+    goalKeeperBlue.goalKeeperMovement();
+    goalKeeperBlue.goalKeeperLimits();
 }
 
 function gameOver(){
