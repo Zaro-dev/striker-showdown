@@ -32,12 +32,11 @@ function startGame(){
     ballObj = new Ball();
     
     strikerObjRed = new Striker("red");
-    /* defenderObjRed = new Defender("red"); */
     goalKeeperRed = new GoalKeeper("red");
     
     strikerObjBlue = new Striker("blue");
-    /* defenderObjBlue = new Defender("blue"); */
     goalKeeperBlue = new GoalKeeper("blue");
+    
 
     
     mainIntervalId = setInterval(() => {
@@ -65,4 +64,54 @@ function gameOver(){
 startBtnNode.addEventListener("click", () =>{
     
     startGame();
+})
+
+window.addEventListener("keydown", (event) =>{
+    
+    if(event.code === "ArrowLeft"){
+        strikerObjBlue.x -= 40;
+        
+        strikerObjBlue.updateStrikerPositionX();
+        
+    } else if(event.code === "ArrowDown"){
+        strikerObjBlue.y += 40;
+        
+        strikerObjBlue.updateStrikerPositionY();
+
+    } else if(event.code === "ArrowUp"){
+        strikerObjBlue.y -= 40;
+        
+        strikerObjBlue.updateStrikerPositionY();
+
+    } else if(event.code === "ArrowRight"){
+        strikerObjBlue.x += 40;
+        
+        strikerObjBlue.updateStrikerPositionX();
+
+    }
+})
+
+window.addEventListener("keydown", (event) =>{
+    
+    if(event.code === "KeyA"){
+        strikerObjRed.x -= 40;
+        
+        strikerObjRed.updateStrikerPositionX();
+        
+    } else if(event.code === "KeyS"){
+        strikerObjRed.y += 40;
+        
+        strikerObjRed.updateStrikerPositionY();
+
+    } else if(event.code === "KeyW"){
+        strikerObjRed.y -= 40;
+        
+        strikerObjRed.updateStrikerPositionY();
+
+    } else if(event.code === "KeyD"){
+        strikerObjRed.x += 40;
+        
+        strikerObjRed.updateStrikerPositionX();
+
+    }
 })

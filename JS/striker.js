@@ -59,6 +59,14 @@ class Striker extends Player{
             this.node.style.left = `${this.x}px`;
         }
     }
+
+    updateStrikerPositionX() {
+        this.node.style.left = `${this.x}px`;
+    }
+
+    updateStrikerPositionY() {
+        this.node.style.top = `${this.y}px`;
+    }
 }
 
 class GoalKeeper extends Player{
@@ -68,15 +76,19 @@ class GoalKeeper extends Player{
         this.topLimit = 0;
         this.botLimit = gameBoxNode.offsetHeight;
 
-        if(team === "red"){
-            this.node.src = "./images/goalkeeper.png"
-            this.x = 0;
-            this.node.style.left = `${this.x}px`;
-        } else if(team === "blue"){
-            this.node.src = "./images/goalkeeper.png"
-            this.x =300;
-            this.node.style.left = `(${this.x}-${this.w})px`;
-        }
+        this.h = 150;
+        this.w = 85;
+        this.node.style.width = `${this.w}px`;
+        this.node.style.height = `${this.h}px`;
+
+        this.node.style.display = "flex";
+        this.node.style.direction = "";
+
+       
+        this.node.src = "./images/goalkeeper.png"
+        this.x = 0;
+        this.node.style.left = `${this.x}px`;
+        
         
         
     }
@@ -101,16 +113,3 @@ class GoalKeeper extends Player{
         }
     }
 }
-
-
-
-/* class Defender extends Player{
-    constructor(team){
-        super(team);
-        if(team === "red"){
-            this.node.src = "./images/player-red.png"
-        } else if(team === "blue"){
-            this.node.src = "./images/player-blue.png"
-        }
-    }
-} */
