@@ -32,7 +32,6 @@ function startGame(){
 
     gameScreenNode.style.display = "flex";
     
-    
     ballObj = new Ball();
     
     strikerObjRed = new Striker("red");
@@ -41,15 +40,38 @@ function startGame(){
     strikerObjBlue = new Striker("blue");
     goalKeeperBlue = new GoalKeeper("blue");
     
-
-    
     mainIntervalId = setInterval(() => {
         gameLoop();
     }, Math.round(1000/60));
-
-    
 }
 
+function gameWinner(){
+    
+    if(document.querySelector("#marcador-a").innerText >= winCondition ){
+        
+        gameScreenNode.style.display = "none";
+        splashScreenNode.style.display = "flex";
+        window.alert("HA GANADO EL EQUIPO VERDE");
+
+        document.querySelector("#marcador-a").innerText = 0;
+        document.querySelector("#marcador-b").innerText = 0;
+
+        clearInterval(mainIntervalId);
+        document.querySelector("#game-box").innerHTML = "";
+
+    } else if(document.querySelector("#marcador-b").innerText >= winCondition){
+        
+        gameScreenNode.style.display = "none";
+        splashScreenNode.style.display = "flex";
+        window.alert("HA GANADO EL EQUIPO ROJO")
+
+        document.querySelector("#marcador-a").innerText = 0;
+        document.querySelector("#marcador-b").innerText = 0;
+
+        clearInterval(mainIntervalId);
+        document.querySelector("#game-box").innerHTML = "";
+    }
+}
 function gameLoop(){
     ballObj.ballMovement();
     goalKeeperRed.goalKeeperMovement();
@@ -67,31 +89,6 @@ function isGoal(){
 
 }
 
-function gameWinner(){
-    
-    if(document.querySelector("#marcador-a").innerText >= winCondition ){
-        
-        gameScreenNode.style.display = "none";
-        splashScreenNode.style.display = "flex";
-        window.alert("HA GANADO EL EQUIPO VERDE");
-
-        document.querySelector("#marcador-a").innerText = 0;
-        document.querySelector("#marcador-b").innerText = 0;
-
-        clearInterval(mainIntervalId);
-
-    } else if(document.querySelector("#marcador-b").innerText >= winCondition){
-        
-        gameScreenNode.style.display = "none";
-        splashScreenNode.style.display = "flex";
-        window.alert("HA GANADO EL EQUIPO ROJO")
-
-        document.querySelector("#marcador-a").innerText = 0;
-        document.querySelector("#marcador-b").innerText = 0;
-
-        clearInterval(mainIntervalId);
-    }
-}
 
 
 
