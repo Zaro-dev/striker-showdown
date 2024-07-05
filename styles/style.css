@@ -4,13 +4,15 @@ body {
 }
 
 #start-btn {
-    background-color: lightgreen;
-    color: black;
+    background-color: black;
+    color: lightgray;
     padding: 20px;
     font-size: 20px;
-    margin-top: 300px;
-    border-radius: 10px;
-    height: 50px;
+    margin-top: 320px;
+    margin-left: 150px;
+    border-radius: 50%;
+    text-align: center;
+    height: 70px;
 }
 
 .container {
@@ -41,7 +43,12 @@ body {
     background-image: url(../images/portada.jpg);
     background-position: center;
     background-size: cover;
+
+    margin-left: 30%;
+    margin-top: 10%;
 }
+
+
 
 
 #game-box {
@@ -65,4 +72,18 @@ body {
 
 #game-screen, #winner-screen {
     display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+#marcador-a {
+    color: red;
+}
+
+#marcador-b {
+    color: blue;
+}
+
+#score-container {
+    font-size: 3.5rem;
 }

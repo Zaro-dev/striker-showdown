@@ -20,6 +20,11 @@ class Ball{
         this.node.style.left = `${this.x}px`;
 
         this.speed = 2;
+        this.isBallMovingRight = false;
+        this.isBallMovingDown = false;
+
+        this.randomXMove = Math.round(Math.random()* this.x);
+        this.randomYMove = Math.round(Math.random()* this.y);
     }
 
     
@@ -28,8 +33,28 @@ class Ball{
     
     //métodos balón
 
-    move(){
-        this.x += this.speed;
+    updateBallPosition(){
+        this.node.style.top = `${this.y}px`;
+        this.node.style.left = `${this.x}px`;
     }
+    
+    ballMovement(){
+        if(this.isBallMovingRight){
+            this.x += this.speed;
+        this.node.style.left = `${this.x}px`;
+        } else {
+            this.x -= this.speed;
+        this.node.style.left = `${this.x}px`
+        }
+    
+        if(this.isBallMovingDown){
+            this.y += this.speed;
+        this.node.style.top= `${this.y}px`
+        } else {
+            this.y -= this.speed;
+        this.node.style.top= `${this.y}px`
+        }
+    }
+
 
 }

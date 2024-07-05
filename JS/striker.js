@@ -35,7 +35,7 @@ class Striker extends Player{
 
             this.h = 75;
             this.w = 65;
-            this.x = 200;
+            this.x = 80;
             this.y = 200;
 
             this.node.style.width = `${this.w}px`;
@@ -49,8 +49,8 @@ class Striker extends Player{
 
             this.h = 75;
             this.w = 65;
-            this.x = 500;
-            this.y = 200;
+            this.x = 580;
+            this.y = 210;
 
             this.node.style.width = `${this.w}px`;
             this.node.style.height = `${this.h}px`;
@@ -81,13 +81,16 @@ class GoalKeeper extends Player{
         this.node.style.width = `${this.w}px`;
         this.node.style.height = `${this.h}px`;
 
-        this.node.style.display = "flex";
-        this.node.style.direction = "";
+        if(this.team === "red"){
+            this.node.src = "./images/goalkeeper.png"
+            this.x = 0;
+            this.node.style.left = `${this.x}px`;
 
-       
-        this.node.src = "./images/goalkeeper.png"
-        this.x = 0;
-        this.node.style.left = `${this.x}px`;
+        } else if(this.team === "blue"){
+            this.node.src = "./images/goalkeeper.png"
+            this.x = gameBoxNode.offsetWidth - 65;
+            this.node.style.left = `${this.x}px`;
+        }
         
         
         
