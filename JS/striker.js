@@ -4,6 +4,7 @@ class Player{
         this.node = document.createElement("img");
         gameBoxNode.append(this.node);
         this.team = team;
+        
 
         
         this.x = 300;
@@ -60,6 +61,8 @@ class Striker extends Player{
         }
     }
 
+    // con esto vamos cambiando la posición de los jugadores en el DOM a través de action listeners
+
     updateStrikerPositionX() {
         this.node.style.left = `${this.x}px`;
     }
@@ -95,6 +98,9 @@ class GoalKeeper extends Player{
         
         
     }
+
+    //movimiento único del portero
+
     goalKeeperMovement(){
         if(this.isGkMovingDown === true){
             this.y += this.playerSpeed;
@@ -105,6 +111,8 @@ class GoalKeeper extends Player{
         }
     }
 
+    //zona delimitada en la cual se moverá el portero
+    
     goalKeeperLimits(){
         
     

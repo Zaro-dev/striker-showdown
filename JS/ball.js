@@ -5,6 +5,8 @@ class Ball {
     this.node.src = "./images/disc.png";
     gameBoxNode.append(this.node);
 
+   
+
     this.x = 355;
     this.y = 225;
     this.w = 30;
@@ -22,16 +24,10 @@ class Ball {
     this.isBallMovingRight = false;
     this.isBallMovingDown = false;
 
-    /* this.randomXMove = Math.round(Math.random() * this.x);
-    this.randomYMove = Math.round(Math.random() * this.y); */
+    
   }
 
-  //métodos balón
-
-  /* updateBallPosition(){
-        this.node.style.top = `${this.y}px`;
-        this.node.style.left = `${this.x}px`;
-    }*/
+  // Desplazamiento de balón
 
   ballMovement() {
     if (this.isBallMovingRight) {

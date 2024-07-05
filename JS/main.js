@@ -11,7 +11,7 @@ const startBtnNode = document.querySelector("#start-btn");
 // game box
 const gameBoxNode = document.querySelector("#game-box");
 
-/* const goalRight = gameBoxNode.offsetWidth; */
+
 const bottomSide = 470;
 console.log(bottomSide)
 
@@ -27,6 +27,8 @@ const winCondition = 5;
 
 
 //* FUNCIONES GLOBALES DEL JUEGO
+
+//iniciamos el intervalo en el que se rige el juego y creamos los objetos que necesitaremos para jugar.
 function startGame(){
     splashScreenNode.style.display = "none";
 
@@ -45,6 +47,7 @@ function startGame(){
     }, Math.round(1000/60));
 }
 
+//indicador de quién gana. Resetea marcadores a 0, limpia el intervalo y deja vacío de elementos el game box.
 function gameWinner(){
     
     if(document.querySelector("#marcador-a").innerText >= winCondition ){
@@ -72,6 +75,8 @@ function gameWinner(){
         document.querySelector("#game-box").innerHTML = "";
     }
 }
+
+// funciones que ocurren dentro del game loop
 function gameLoop(){
     ballObj.ballMovement();
     goalKeeperRed.goalKeeperMovement();
@@ -83,23 +88,18 @@ function gameLoop(){
     gameWinner();
 }
 
+//actualiza la posición del balón a la inicial tras marcar gol
 function isGoal(){
     ballObj.x = 250
     ballObj.y = 250
 
 }
 
-
-
-
-
-/* function ballCollisionPlayers{
-
-} */
+// establecemos las colisiones de la pelota y lo que ocurre. Rebota en paredes laterales y jugadores/porteros. En las lineas de fondo cuenta como gol.
 
 function ballCollision(){
     
-    if(ballObj.x > 500){
+    if(ballObj.x > 700){
        isGoal(); 
        document.querySelector("#marcador-a").innerText++;
     }
@@ -117,27 +117,46 @@ function ballCollision(){
         ballObj.isBallMovingDown = true;
     }
 
-
-     /* if(ballObj.y > strikerObjBlue.y && (ballObj.y + ballObj.h) < (strikerObjBlue.y + strikerObjBlue.h) && (ballObj.x + ballObj.w) > strikerObjBlue.h ){
-        
-        ballObj.isBallMovingRight = false;
+    if (
+        ballObj.x < strikerObjRed.x + strikerObjRed.w &&
+        ballObj.x + ballObj.w > strikerObjRed.x &&
+        ballObj.y < strikerObjRed.y + strikerObjRed.h &&
+        ballObj.y + ballObj.h > strikerObjRed.y
+      ) {
         ballObj.isBallMovingDown = true;
-     }
-     
-     if(ballObj.y > strikerObjRed.y && (ballObj.y + ballObj.h) < (strikerObjRed.y + strikerObjRed.h) && (ballObj.x + ballObj.w) < strikerObjRed.h ){
         ballObj.isBallMovingRight = true;
-        ballObj.isBallMovingDown =  true;
-     }
- 
-     if(ballObj.y > goalKeeperBlue.y && (ballObj.y + ballObj.h) < (goalKeeperBlue.y + goalKeeperBlue.h) && (ballObj.x + ballObj.w) > goalKeeperBlue.h){
-         ballObj.isBallMovingDown = false;
-         ballObj.isBallMovingRight = false;
-     }
-     if(ballObj.y > goalKeeperRed.y && (ballObj.y + ballObj.h) < (goalKeeperRed.y + goalKeeperRed.h) && (ballObj.x + ballObj.w) < goalKeeperRed.h){
-         ballObj.isBallMovingDown = true;
-         ballObj.isBallMovingRight = false;
-     } */
+    }
+
+    if (
+        ballObj.x < goalKeeperRed.x + goalKeeperRed.w &&
+        ballObj.x + ballObj.w > goalKeeperRed.x &&
+        ballObj.y < goalKeeperRed.y + goalKeeperRed.h &&
+        ballObj.y + ballObj.h > goalKeeperRed.y
+      ) {
+        ballObj.isBallMovingDown = true;
+        ballObj.isBallMovingRight = true;
+    }
+
+    if (
+        ballObj.x < strikerObjBlue.x + strikerObjBlue.w &&
+        ballObj.x + ballObj.w > strikerObjBlue.x &&
+        ballObj.y < strikerObjBlue.y + strikerObjBlue.h &&
+        ballObj.y + ballObj.h > strikerObjBlue.y
+      ) {
+        ballObj.isBallMovingDown = false;
+        ballObj.isBallMovingRight = false;
+    }
+    if (
+        ballObj.x < goalKeeperBlue.x + goalKeeperBlue.w &&
+        ballObj.x + ballObj.w > goalKeeperBlue.x &&
+        ballObj.y < goalKeeperBlue.y + goalKeeperBlue.h &&
+        ballObj.y + ballObj.h > goalKeeperBlue.y
+      ) {
+        ballObj.isBallMovingDown = false;
+        ballObj.isBallMovingRight = false;
+    }
 }
+    
 
 //* EVENT LISTENERS
 
@@ -145,6 +164,8 @@ startBtnNode.addEventListener("click", () =>{
     
     startGame();
 })
+
+//movimiento para jugador de la derecha
 
 window.addEventListener("keydown", (event) =>{
     
@@ -171,6 +192,8 @@ window.addEventListener("keydown", (event) =>{
     }
 })
 
+
+//movimiento para jugadore de la izquierda
 window.addEventListener("keydown", (event) =>{
     
     if(event.code === "KeyA"){
