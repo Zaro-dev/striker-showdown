@@ -20,7 +20,7 @@ class Ball {
     this.node.style.top = `${this.y}px`;
     this.node.style.left = `${this.x}px`;
 
-    this.speed = 2;
+    this.speed = 4;
     this.isBallMovingRight = false;
     this.isBallMovingDown = false;
 

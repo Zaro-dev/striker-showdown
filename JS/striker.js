@@ -20,7 +20,7 @@ class Player{
         this.node.style.top = `${this.y}px`;
         this.node.style.left = `${this.x}px`;
 
-        this.playerSpeed = 3;
+        this.playerSpeed = 2.5;
     }
 
     //aquí irán los métodos de cada jugador
@@ -112,7 +112,7 @@ class GoalKeeper extends Player{
     }
 
     //zona delimitada en la cual se moverá el portero
-    
+
     goalKeeperLimits(){
         
     
